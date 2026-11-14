@@ -1,0 +1,491 @@
+{
+  "source_id": "postgresql-17-performance",
+  "title": "PostgreSQL 17 Documentation: Indexes, Performance Tips, and Parallel Query",
+  "source_path_or_url": "https://www.postgresql.org/docs/17/index.html",
+  "license_or_permission": "PostgreSQL documentation legal notice grants permission to use, copy, modify, and distribute the documentation provided the notice is retained.",
+  "license_source_url": "https://www.postgresql.org/docs/17/legalnotice.html",
+  "license_notice": "PostgreSQL Database Management System (also known as Postgres, formerly known as Postgres95)\n\nPortions Copyright © 1996-2026, PostgreSQL Global Development Group\n\nPortions Copyright © 1994, The Regents of the University of California\n\nPermission to use, copy, modify, and distribute this software and its documentation for any purpose, without fee, and without a written agreement is hereby granted, provided that the above copyright notice and this paragraph and the following two paragraphs appear in all copies.\n\nIN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF THE UNIVERSITY OF CALIFORNIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nTHE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE SOFTWARE PROVIDED HEREUNDER IS ON AN “AS-IS” BASIS, AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATIONS TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.",
+  "accessed_at": "2026-11-14",
+  "snapshot": "PostgreSQL 17.12 Documentation; official section URLs use the /17/ series path.",
+  "selection_rule": "Use the 21 content sections listed below from chapters 11, 14, and 15; navigation, header, and footer text are excluded. HTML is normalized to NFC; unit char_count uses Python len() on normalized text.",
+  "minimum_unit_characters": 1500,
+  "section_count": 21,
+  "unit_count": 44,
+  "sections": [
+    {
+      "chapter": "11",
+      "section_id": "indexes-intro",
+      "title": "11.1 Introduction",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-intro.html",
+      "normalized_character_count": 4008
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-types",
+      "title": "11.2 Index Types",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-types.html",
+      "normalized_character_count": 5955
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-multicolumn",
+      "title": "11.3 Multicolumn Indexes",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-multicolumn.html",
+      "normalized_character_count": 3642
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-ordering",
+      "title": "11.4 Indexes and ORDER BY",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-ordering.html",
+      "normalized_character_count": 3040
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-bitmap-scans",
+      "title": "11.5 Combining Multiple Indexes",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-bitmap-scans.html",
+      "normalized_character_count": 3323
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-unique",
+      "title": "11.6 Unique Indexes",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-unique.html",
+      "normalized_character_count": 1105
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-expressional",
+      "title": "11.7 Indexes on Expressions",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-expressional.html",
+      "normalized_character_count": 1912
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-partial",
+      "title": "11.8 Partial Indexes",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-partial.html",
+      "normalized_character_count": 8764
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-index-only-scans",
+      "title": "11.9 Index-Only Scans and Covering Indexes",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-index-only-scans.html",
+      "normalized_character_count": 9392
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-opclass",
+      "title": "11.10 Operator Classes and Operator Families",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-opclass.html",
+      "normalized_character_count": 4020
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-collations",
+      "title": "11.11 Indexes and Collations",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-collations.html",
+      "normalized_character_count": 895
+    },
+    {
+      "chapter": "11",
+      "section_id": "indexes-examine",
+      "title": "11.12 Examining Index Usage",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/indexes-examine.html",
+      "normalized_character_count": 3691
+    },
+    {
+      "chapter": "14",
+      "section_id": "using-explain",
+      "title": "14.1 Using EXPLAIN",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/using-explain.html",
+      "normalized_character_count": 38680
+    },
+    {
+      "chapter": "14",
+      "section_id": "planner-stats",
+      "title": "14.2 Statistics Used by the Planner",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/planner-stats.html",
+      "normalized_character_count": 14583
+    },
+    {
+      "chapter": "14",
+      "section_id": "explicit-joins",
+      "title": "14.3 Controlling the Planner with Explicit JOIN Clauses",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/explicit-joins.html",
+      "normalized_character_count": 6665
+    },
+    {
+      "chapter": "14",
+      "section_id": "populate",
+      "title": "14.4 Populating a Database",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/populate.html",
+      "normalized_character_count": 9363
+    },
+    {
+      "chapter": "14",
+      "section_id": "non-durability",
+      "title": "14.5 Non-Durable Settings",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/non-durability.html",
+      "normalized_character_count": 1398
+    },
+    {
+      "chapter": "15",
+      "section_id": "how-parallel-query-works",
+      "title": "15.1 How Parallel Query Works",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/how-parallel-query-works.html",
+      "normalized_character_count": 3493
+    },
+    {
+      "chapter": "15",
+      "section_id": "when-can-parallel-query-be-used",
+      "title": "15.2 When Can Parallel Query Be Used?",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/when-can-parallel-query-be-used.html",
+      "normalized_character_count": 3584
+    },
+    {
+      "chapter": "15",
+      "section_id": "parallel-plans",
+      "title": "15.3 Parallel Plans",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/parallel-plans.html",
+      "normalized_character_count": 8092
+    },
+    {
+      "chapter": "15",
+      "section_id": "parallel-safety",
+      "title": "15.4 Parallel Safety",
+      "source_path_or_url": "https://www.postgresql.org/docs/17/parallel-safety.html",
+      "normalized_character_count": 4070
+    }
+  ],
+  "units": [
+    {
+      "unit_id": "pg17-001",
+      "section_ids": [
+        "indexes-intro"
+      ],
+      "normalized_character_count": 3061
+    },
+    {
+      "unit_id": "pg17-002",
+      "section_ids": [
+        "indexes-intro",
+        "indexes-types"
+      ],
+      "normalized_character_count": 3056
+    },
+    {
+      "unit_id": "pg17-003",
+      "section_ids": [
+        "indexes-types"
+      ],
+      "normalized_character_count": 3025
+    },
+    {
+      "unit_id": "pg17-004",
+      "section_ids": [
+        "indexes-types",
+        "indexes-multicolumn"
+      ],
+      "normalized_character_count": 3321
+    },
+    {
+      "unit_id": "pg17-005",
+      "section_ids": [
+        "indexes-multicolumn",
+        "indexes-ordering"
+      ],
+      "normalized_character_count": 3033
+    },
+    {
+      "unit_id": "pg17-006",
+      "section_ids": [
+        "indexes-ordering",
+        "indexes-bitmap-scans"
+      ],
+      "normalized_character_count": 3004
+    },
+    {
+      "unit_id": "pg17-007",
+      "section_ids": [
+        "indexes-bitmap-scans",
+        "indexes-unique",
+        "indexes-expressional"
+      ],
+      "normalized_character_count": 3091
+    },
+    {
+      "unit_id": "pg17-008",
+      "section_ids": [
+        "indexes-expressional",
+        "indexes-partial"
+      ],
+      "normalized_character_count": 3009
+    },
+    {
+      "unit_id": "pg17-009",
+      "section_ids": [
+        "indexes-partial"
+      ],
+      "normalized_character_count": 3669
+    },
+    {
+      "unit_id": "pg17-010",
+      "section_ids": [
+        "indexes-partial"
+      ],
+      "normalized_character_count": 3103
+    },
+    {
+      "unit_id": "pg17-011",
+      "section_ids": [
+        "indexes-partial",
+        "indexes-index-only-scans"
+      ],
+      "normalized_character_count": 2502
+    },
+    {
+      "unit_id": "pg17-012",
+      "section_ids": [
+        "indexes-index-only-scans"
+      ],
+      "normalized_character_count": 3008
+    },
+    {
+      "unit_id": "pg17-013",
+      "section_ids": [
+        "indexes-index-only-scans"
+      ],
+      "normalized_character_count": 3029
+    },
+    {
+      "unit_id": "pg17-014",
+      "section_ids": [
+        "indexes-index-only-scans",
+        "indexes-opclass"
+      ],
+      "normalized_character_count": 3003
+    },
+    {
+      "unit_id": "pg17-015",
+      "section_ids": [
+        "indexes-opclass",
+        "indexes-collations"
+      ],
+      "normalized_character_count": 3064
+    },
+    {
+      "unit_id": "pg17-016",
+      "section_ids": [
+        "indexes-collations",
+        "indexes-examine"
+      ],
+      "normalized_character_count": 3761
+    },
+    {
+      "unit_id": "pg17-017",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3161
+    },
+    {
+      "unit_id": "pg17-018",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3257
+    },
+    {
+      "unit_id": "pg17-019",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3042
+    },
+    {
+      "unit_id": "pg17-020",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3183
+    },
+    {
+      "unit_id": "pg17-021",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3070
+    },
+    {
+      "unit_id": "pg17-022",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3010
+    },
+    {
+      "unit_id": "pg17-023",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3165
+    },
+    {
+      "unit_id": "pg17-024",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3140
+    },
+    {
+      "unit_id": "pg17-025",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3012
+    },
+    {
+      "unit_id": "pg17-026",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3048
+    },
+    {
+      "unit_id": "pg17-027",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3109
+    },
+    {
+      "unit_id": "pg17-028",
+      "section_ids": [
+        "using-explain"
+      ],
+      "normalized_character_count": 3827
+    },
+    {
+      "unit_id": "pg17-029",
+      "section_ids": [
+        "using-explain",
+        "planner-stats"
+      ],
+      "normalized_character_count": 3351
+    },
+    {
+      "unit_id": "pg17-030",
+      "section_ids": [
+        "planner-stats"
+      ],
+      "normalized_character_count": 3051
+    },
+    {
+      "unit_id": "pg17-031",
+      "section_ids": [
+        "planner-stats"
+      ],
+      "normalized_character_count": 3196
+    },
+    {
+      "unit_id": "pg17-032",
+      "section_ids": [
+        "planner-stats"
+      ],
+      "normalized_character_count": 3018
+    },
+    {
+      "unit_id": "pg17-033",
+      "section_ids": [
+        "planner-stats",
+        "explicit-joins"
+      ],
+      "normalized_character_count": 3821
+    },
+    {
+      "unit_id": "pg17-034",
+      "section_ids": [
+        "explicit-joins"
+      ],
+      "normalized_character_count": 3195
+    },
+    {
+      "unit_id": "pg17-035",
+      "section_ids": [
+        "explicit-joins",
+        "populate"
+      ],
+      "normalized_character_count": 3129
+    },
+    {
+      "unit_id": "pg17-036",
+      "section_ids": [
+        "populate"
+      ],
+      "normalized_character_count": 3011
+    },
+    {
+      "unit_id": "pg17-037",
+      "section_ids": [
+        "populate"
+      ],
+      "normalized_character_count": 3074
+    },
+    {
+      "unit_id": "pg17-038",
+      "section_ids": [
+        "populate",
+        "non-durability"
+      ],
+      "normalized_character_count": 3785
+    },
+    {
+      "unit_id": "pg17-039",
+      "section_ids": [
+        "how-parallel-query-works"
+      ],
+      "normalized_character_count": 3091
+    },
+    {
+      "unit_id": "pg17-040",
+      "section_ids": [
+        "how-parallel-query-works",
+        "when-can-parallel-query-be-used"
+      ],
+      "normalized_character_count": 3193
+    },
+    {
+      "unit_id": "pg17-041",
+      "section_ids": [
+        "when-can-parallel-query-be-used",
+        "parallel-plans"
+      ],
+      "normalized_character_count": 3301
+    },
+    {
+      "unit_id": "pg17-042",
+      "section_ids": [
+        "parallel-plans"
+      ],
+      "normalized_character_count": 3139
+    },
+    {
+      "unit_id": "pg17-043",
+      "section_ids": [
+        "parallel-plans",
+        "parallel-safety"
+      ],
+      "normalized_character_count": 3213
+    },
+    {
+      "unit_id": "pg17-044",
+      "section_ids": [
+        "parallel-safety"
+      ],
+      "normalized_character_count": 3298
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "A_fixed": {
+    "dev": {
+      "hit_at_1": {
+        "hits": 5,
+        "total": 15
+      },
+      "evidence_hit_at_3": {
+        "hits": 12,
+        "total": 15
+      },
+      "filter_compliance_at_3": {
+        "hits": 3,
+        "total": 3
+      }
+    },
+    "test": {
+      "hit_at_1": {
+        "hits": 2,
+        "total": 5
+      },
+      "evidence_hit_at_3": {
+        "hits": 2,
+        "total": 5
+      },
+      "filter_compliance_at_3": {
+        "hits": 3,
+        "total": 3
+      }
+    }
+  },
+  "B_paragraph": {
+    "dev": {
+      "hit_at_1": {
+        "hits": 8,
+        "total": 15
+      },
+      "evidence_hit_at_3": {
+        "hits": 12,
+        "total": 15
+      },
+      "filter_compliance_at_3": {
+        "hits": 3,
+        "total": 3
+      }
+    },
+    "test": {
+      "hit_at_1": {
+        "hits": 2,
+        "total": 5
+      },
+      "evidence_hit_at_3": {
+        "hits": 2,
+        "total": 5
+      },
+      "filter_compliance_at_3": {
+        "hits": 3,
+        "total": 3
+      }
+    }
+  },
+  "C_paragraph_filter": {
+    "dev": {
+      "hit_at_1": {
+        "hits": 8,
+        "total": 15
+      },
+      "evidence_hit_at_3": {
+        "hits": 12,
+        "total": 15
+      },
+      "filter_compliance_at_3": {
+        "hits": 3,
+        "total": 3
+      }
+    },
+    "test": {
+      "hit_at_1": {
+        "hits": 2,
+        "total": 5
+      },
+      "evidence_hit_at_3": {
+        "hits": 2,
+        "total": 5
+      },
+      "filter_compliance_at_3": {
+        "hits": 3,
+        "total": 3
+      }
+    }
+  }
+}

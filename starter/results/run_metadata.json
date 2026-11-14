@@ -1,0 +1,77 @@
+{
+  "corpus": "data\\postgresql17_units.jsonl",
+  "benchmark": "benchmark\\postgresql17_questions.jsonl",
+  "source_units": 44,
+  "questions": 20,
+  "strategies": {
+    "A_fixed": {
+      "chunk_count": 179,
+      "total_characters": 153086,
+      "min_chunk_characters": 161,
+      "max_chunk_characters": 1000,
+      "mean_chunk_characters": 855.23,
+      "chunking_seconds": 0.003,
+      "document_embedding_tokens": 33559,
+      "embedding_reused_from": null,
+      "ingest_seconds": 15.635
+    },
+    "B_paragraph": {
+      "chunk_count": 186,
+      "total_characters": 139352,
+      "min_chunk_characters": 114,
+      "max_chunk_characters": 1000,
+      "mean_chunk_characters": 749.2,
+      "chunking_seconds": 0.007,
+      "document_embedding_tokens": 30461,
+      "embedding_reused_from": null,
+      "ingest_seconds": 15.742
+    },
+    "C_paragraph_filter": {
+      "chunk_count": 186,
+      "total_characters": 139352,
+      "min_chunk_characters": 114,
+      "max_chunk_characters": 1000,
+      "mean_chunk_characters": 749.2,
+      "chunking_seconds": 0.001,
+      "document_embedding_tokens": 0,
+      "embedding_reused_from": "B_paragraph",
+      "ingest_seconds": 0.866
+    }
+  },
+  "embedding_model": "openai/text-embedding-3-small",
+  "embedding_provider": "openrouter",
+  "embedding_dimensions": 1536,
+  "embedding_api_requests": 7,
+  "document_embedding_tokens": 64020,
+  "query_embedding_tokens": 831,
+  "total_embedding_tokens_including_queries": 64851,
+  "embedding_cost_usd": null,
+  "embedding_cost_note": "Not estimated; set EMBEDDING_USD_PER_1M_TOKENS from the provider's current pricing.",
+  "vector_store": "PostgreSQL + pgvector",
+  "database_versions": {
+    "postgresql": "16.16 (Debian 16.16-1.pgdg12+1)",
+    "pgvector": "0.8.7"
+  },
+  "python_version": "3.13.3",
+  "library_versions": {
+    "psycopg": "3.3.8",
+    "pypdf": "6.21.4",
+    "python-dotenv": "1.2.4"
+  },
+  "search_metric": "cosine distance",
+  "search_type": "exact (no approximate vector index)",
+  "search_metrics": {
+    "A_fixed": {
+      "total_seconds": 1.094,
+      "mean_seconds_per_query": 0.05471
+    },
+    "B_paragraph": {
+      "total_seconds": 1.168,
+      "mean_seconds_per_query": 0.058424
+    },
+    "C_paragraph_filter": {
+      "total_seconds": 1.073,
+      "mean_seconds_per_query": 0.053666
+    }
+  }
+}

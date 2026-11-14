@@ -1,4 +1,4 @@
 strategy,chunking,chunk_size,overlap,metadata,filter,vectorizer,hypothesis,dev_hit1,dev_hit3,test_hit1,test_hit3,notes
-A,,,,,,,,,,,,
-B,,,,,,,,,,,,
-C,,,,,,,,,,,,
+A_fixed,fixed characters,1000,100,"document_id; source; unit_id; section_ids; chapter; version",none,"OpenRouter openai/text-embedding-3-small (1536d)","Consistent windows may split an idea or evidence across boundaries.",5/15,12/15,2/5,2/5,"Run completed 2026-11-14; 179 chunks; test filter compliance 3/3; 64,851 total embedding tokens across A/B and queries; cost not estimated."
+B_paragraph,paragraph-aware,1000,none,"document_id; source; unit_id; section_ids; chapter; version",none,"OpenRouter openai/text-embedding-3-small (1536d)","Paragraph boundaries may retain context and reduce evidence fragmentation.",8/15,12/15,2/5,2/5,"Run completed 2026-11-14; 186 chunks; test filter compliance 3/3; cost not estimated."
+C_paragraph_filter,paragraph-aware,1000,none,"document_id; source; unit_id; section_ids; chapter; version","chapter filter when supplied","OpenRouter openai/text-embedding-3-small (1536d)","Filtering may improve in-scope retrieval, but can reduce recall when context is wrong.",8/15,12/15,2/5,2/5,"Run completed 2026-11-14; 186 chunks; test filter compliance 3/3; same retrieval hits as B on this sample; cost not estimated."
